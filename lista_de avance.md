@@ -1,15 +1,27 @@
-Terminados: [5]/[51]
-# Terminados
+Terminados: [2]/[51]
+# Realemente terminados
+| Nueva ruta                 | Portada desde               |
+| -------------------------- | --------------------------- |
+| utils::StackTraceElement   | java.lang.StackTraceElement |
+| utils::Throwable           | java.lang.Throwable         |
+
+# Testeados
+| Nueva ruta                 | Portada desde               |
+| -------------------------- | --------------------------- |
+
+# Terminado de reescribir
 | Nueva ruta                 | Portada desde               |
 | -------------------------- | --------------------------- |
 | utils::Argument            | NaN                         |
 | utils::Value               | NaN                         |
-| utils::StackTraceElement   | java.lang.StackTraceElement |
-| utils::Throwable           | java.lang.Throwable         |
-| org::slf4j::helpers::Utils | org.slf4j.helpers.Utils     |
-# Pendientes
+| org::slf4j::helpers::Utils | org.slf4j.helpers.Util      |
 
-| Prioridad de port | Nueva ruta                                       | Portada desde                                 |
+# En Stubs
+| Nueva ruta                 | Portada desde               |
+| -------------------------- | --------------------------- |
+
+# Pendientes
+|   Orden de port   | Nueva ruta                                       | Portada desde                                 |
 | :---------------: | ------------------------------------------------ | --------------------------------------------- |
 |         1         | org::slf4j::Marker                               | org.slf4j.Marker                              |
 |         5         | org::slf4j::Logger                               | org.slf4j.Logger                              |
@@ -17,20 +29,20 @@ Terminados: [5]/[51]
 |        26         | org::slf4j::ILoggerFactory                       | org.slf4j.ILoggerFactory                      |
 |        41         | org::slf4j::LoggerFactory                        | org.slf4j.LoggerFactory                       |
 |        42         | org::slf4j::LoggerFactoryFriend                  | org.slf4j.LoggerFactoryFriend                 |
-|        43         | org::slf4j::MarkerFactory                        | org.slf4j.MArkerFactory                       |
+|        43         | org::slf4j::MarkerFactory                        | org.slf4j.MarkerFactory                       |
 |        44         | org::slf4j::MDCCloseable                         | org.slf4j.MDCCloseable                        |
 |        45         | org::slf4j::MDC                                  | org.slf4j.MDC                                 |
-|        46         | org::slf4j::MDCAmbit                             | org.slf4j.Ambit                               |
-|         2         | org::slf4j::spi::LoggingEventBuilder             | org.slf4.spi.LoggingEventBuilder              |
+|        46         | org::slf4j::MDCAmbit                             | org.slf4j.MDCAmbit                            |
+|         2         | org::slf4j::spi::LoggingEventBuilder             | org.slf4j.spi.LoggingEventBuilder             |
 |         6         | org::slf4j::spi::NOPLoggingEventBuilder          | org.slf4j.spi.NOPLoggingEventBuilder          |
 |         7         | org::slf4j::spi::LocationAwareLogger             | org.slf4j.spi.LocationAwareLogger             |
-|        16         | org::slf4j::spi::MDCAdaper                       | org.slf4j.spi.MDCAdapter                      |
-|        27         | org::slf4j::spi::SLF4JJServiceProvider           | org.slf4j.spi.SLF4JServiceProvider            |
+|        16         | org::slf4j::spi::MDCAdapter                      | org.slf4j.spi.MDCAdapter                      |
+|        27         | org::slf4j::spi::SLF4JServiceProvider            | org.slf4j.spi.SLF4JServiceProvider            |
 |        37         | org::slf4j::spi::CallerBoundaryAware             | org.slf4j.spi.CallerBoundaryAware             |
 |        38         | org::slf4j::spi::LoggingEventAware               | org.slf4j.spi.LoggingEventAware               |
 |        39         | org::slf4j::spi::DefaultLoggingEventBuilder      | org.slf4j.spi.DefaultLoggingEventBuilder      |
 |         3         | org::slf4j::event::EventConstants                | org.slf4j.event.EventConstants                |
-|         4         | org::slf4j::event::Level                         | org.slf4.event.Level                          |
+|         4         | org::slf4j::event::Level                         | org.slf4j.event.Level                         |
 |         8         | org::slf4j::event::EventRecordingLogger          | org.slf4j.event.EventRecordingLogger          |
 |         9         | org::slf4j::event::KeyValuePair                  | org.slf4j.event.KeyValuePair                  |
 |        11         | org::slf4j::event::SubstituteLoggingEvent        | org.slf4j.event.SubstituteLoggingEvent        |
@@ -45,7 +57,7 @@ Terminados: [5]/[51]
 |        20         | org::slf4j::helpers::AbstractLogger              | org.slf4j.helpers.AbstractLogger              |
 |        21         | org::slf4j::helpers::LegacyAbstractLogger        | org.slf4j.helpers.LegacyAbstractLogger        |
 |        22         | org::slf4j::helpers::NamedLoggerBase             | org.slf4j.helpers.NamedLoggerBase             |
-|        23         | org::slf4j::helpers::MakerIgnoringBase           | org.slf4j.helpers.MarkerIgnoringBase          |
+|        23         | org::slf4j::helpers::MarkerIgnoringBase          | org.slf4j.helpers.MarkerIgnoringBase          |
 |        24         | org::slf4j::helpers::NormalizedParameters        | org.slf4j.helpers.NormalizedParameters        |
 |        25         | org::slf4j::helpers::MessageFormatter            | org.slf4j.helpers.MessageFormatter            |
 |        28         | org::slf4j::helpers::NOPLoggerFactory            | org.slf4j.helpers.NOPLoggerFactory            |
