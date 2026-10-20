@@ -8,11 +8,11 @@ Terminados: [2]/[51]
 # Testeados
 | Nueva ruta                 | Portada desde               |
 | -------------------------- | --------------------------- |
+| utils::Argument            | NaN                         |
 
 # Terminado de reescribir
 | Nueva ruta                 | Portada desde               |
 | -------------------------- | --------------------------- |
-| utils::Argument            | NaN                         |
 | utils::Value               | NaN                         |
 | org::slf4j::helpers::Utils | org.slf4j.helpers.Util      |
 
