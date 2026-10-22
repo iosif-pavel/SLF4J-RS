@@ -1,20 +1,17 @@
-Terminados: [2]/[51]
+Terminados: [5]/[51]
+Porcentaje: [9.8]% terminado
 # Realemente terminados
 | Nueva ruta                 | Portada desde               |
 | -------------------------- | --------------------------- |
 | utils::StackTraceElement   | java.lang.StackTraceElement |
 | utils::Throwable           | java.lang.Throwable         |
-
-# Testeados
-| Nueva ruta                 | Portada desde               |
-| -------------------------- | --------------------------- |
 | utils::Argument            | NaN                         |
+| utils::Value               | NaN                         |
+| org::slf4j::helpers::Utils | org.slf4j.helpers.Util      |
 
 # Terminado de reescribir
 | Nueva ruta                 | Portada desde               |
 | -------------------------- | --------------------------- |
-| utils::Value               | NaN                         |
-| org::slf4j::helpers::Utils | org.slf4j.helpers.Util      |
 
 # En Stubs
 | Nueva ruta                 | Portada desde               |

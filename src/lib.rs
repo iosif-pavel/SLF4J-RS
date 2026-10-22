@@ -1,6 +1,7 @@
 // Modules
 mod utils;
 mod org;
+pub mod test;
 
 // Files
 
@@ -8,11 +9,3 @@ mod org;
 
 // Types
 
-//Test
-#[cfg(test)]
-mod test{
-    #[test]
-    fn test(){
-        // cada modulo final lleva su propio test, esto solo los centraliza para lanzarlos con un solo boton
-    }
-}
