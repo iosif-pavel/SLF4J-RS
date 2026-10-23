@@ -23,5 +23,5 @@
  */
 
 pub trait CallerBoundaryAware {
-    
+    fn set_caller_boundary(&mut self, fqcn:String);
 }
