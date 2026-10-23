@@ -25,3 +25,11 @@
 pub trait LocationAwareLogger {
     
 }
+
+pub trait LocationAwareLoggerConstants {
+    const TRACE:u8 = 00;
+    const DEBUG:u8 = 10;
+    const INFO:u8 = 20;
+    const WARN:u8 = 30;
+    const ERROR:u8 = 40;
+}

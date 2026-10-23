@@ -22,4 +22,11 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
- pub struct EventConstants;
+use crate::org::slf4j::spi::LocationAwareLoggerConstants;
+pub struct EventConstants;
+
+impl EventConstants {
+    pub const NA_SUBST:&'static str = "NA/SubstituteLogger";
+}
+
+impl LocationAwareLoggerConstants for EventConstants {}
