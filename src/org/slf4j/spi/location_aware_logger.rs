@@ -22,8 +22,26 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-pub trait LocationAwareLogger {
-    
+use crate::{
+    utils::{
+        Argument,
+        Throwable
+    },
+    org::slf4j::{
+        Logger,
+        Marker
+    }
+};
+
+pub trait LocationAwareLogger: Logger {
+    fn log(
+        marker:Box<dyn Marker>, 
+        fqcn:String,
+        level:i32,
+        msg:String,
+        ags:&[Argument],
+        t:Throwable
+    );
 }
 
 pub trait LocationAwareLoggerConstants {

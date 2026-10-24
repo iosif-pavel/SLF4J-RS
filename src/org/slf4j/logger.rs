@@ -46,16 +46,16 @@ pub const ROOT_LOGGER_NAME:&'static str = "ROOT";
 
 pub trait Logger {
     fn get_name(&self)->&String;
-    fn make_logging_event_builder(&self, logger:SharedLogger, level:Level)->Box<dyn LoggingEventBuilder>{
+    fn make_logging_event_builder(&self, logger:SharedLogger, level:Level)->Arc<dyn LoggingEventBuilder>{
         let dleb = DefaultLoggingEventBuilder::new(logger, level);
-        Box::new(dleb)
+        Arc::new(dleb)
     }
     
-    fn at_level(&self, logger:SharedLogger, level:Level)->Box<dyn LoggingEventBuilder>{
+    fn at_level(&self, logger:SharedLogger, level:Level)->Arc<dyn LoggingEventBuilder>{
         if self.is_enabled_for_level(&level){
             self.make_logging_event_builder(logger, level)
         }else{
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn is_enabled_for_level(&self, level:&Level)->bool{
@@ -70,11 +70,11 @@ pub trait Logger {
     }
     
     fn is_trace_enabled(&self)->bool;
-    fn at_trace(&self, logger:SharedLogger)->Box<dyn LoggingEventBuilder>{
+    fn at_trace(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
         if self.is_trace_enabled() {
             self.make_logging_event_builder(logger, Level::TRACE)
         }else {
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn trace_with_msg(&self, msg:String);
@@ -86,11 +86,11 @@ pub trait Logger {
     fn is_trace_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
 
     fn is_debug_enabled(&self)->bool;
-    fn at_debug(&self, logger:SharedLogger)->Box<dyn LoggingEventBuilder>{
+    fn at_debug(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
         if self.is_debug_enabled() {
             self.make_logging_event_builder(logger, Level::DEBUG)
         }else {
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn debug_with_msg(&self, msg:String);
@@ -102,11 +102,11 @@ pub trait Logger {
     fn is_debug_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_info_enabled(&self)->bool;
-    fn at_(&self, logger:SharedLogger)->Box<dyn LoggingEventBuilder>{
+    fn at_(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
         if self.is_info_enabled() {
             self.make_logging_event_builder(logger, Level::INFO)
         }else {
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn info_with_msg(&self, msg:String);
@@ -118,11 +118,11 @@ pub trait Logger {
     fn is_info_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_warn_enabled(&self)->bool;
-    fn at_warn(&self, logger:SharedLogger)->Box<dyn LoggingEventBuilder>{
+    fn at_warn(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
         if self.is_warn_enabled() {
             self.make_logging_event_builder(logger, Level::WARN)
         }else {
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn warn_with_msg(&self, msg:String);
@@ -134,11 +134,11 @@ pub trait Logger {
     fn is_warn_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_error_enabled(&self)->bool;
-    fn at_error(&self, logger:SharedLogger)->Box<dyn LoggingEventBuilder>{
+    fn at_error(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
         if self.is_error_enabled() {
             self.make_logging_event_builder(logger, Level::ERROR)
         }else {
-            Box::new(NOPLoggingEventBuilder::singleton())
+            NOPLoggingEventBuilder::singleton()
         }
     }
     fn error_with_msg(&self, msg:String);
