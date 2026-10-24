@@ -22,4 +22,29 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-pub trait LoggingEvent{}
+use crate::{
+    org::slf4j::{
+        Marker, event::{
+            KeyValuePair, 
+            Level
+        }
+    }, utils::{
+        Argument,
+        Throwable,
+        StackTraceElement
+    }
+};
+
+pub trait LoggingEvent{
+    fn get_level(&self)->Level;
+    fn get_logger_name(&self)->&String;
+    fn get_message(&self)->&String;
+    fn get_arguments(&self)->&[Argument];
+    fn get_markers(&self)->&[Box<dyn Marker>];
+    fn get_key_value_pair(&self)->&[KeyValuePair];
+    fn get_throwable(&self)->Option<Throwable>;
+    fn get_time_stamp(&self)->i64;
+    fn get_thread_name(&self)->&String;
+    fn get_caller_boundary(&self)->&String;
+    fn get_caller_data(&self) -> &[StackTraceElement];
+}

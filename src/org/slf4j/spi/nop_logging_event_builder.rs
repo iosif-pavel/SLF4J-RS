@@ -22,4 +22,58 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+use crate::org::slf4j::spi::LoggingEventBuilder;
+
 pub struct NOPLoggingEventBuilder;
+
+impl NOPLoggingEventBuilder {
+    pub fn singleton()->NOPLoggingEventBuilder{
+        todo!()
+    }
+}
+
+impl LoggingEventBuilder for NOPLoggingEventBuilder {
+    fn set_cause(&mut self, cause:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn add_marker(&mut self, marker: &dyn crate::org::slf4j::Marker) {
+        todo!()
+    }
+
+    fn add_argument(&mut self, arg:crate::utils::Argument) {
+        todo!()
+    }
+
+    fn add_key_value(&mut self, key:String, value:Box<dyn crate::utils::Value>) {
+        todo!()
+    }
+
+    fn with_caller_data_depth(&mut self, depth:u8) {
+        todo!()
+    }
+
+    fn set_message(&mut self, msg:String) {
+        todo!()
+    }
+
+    fn set_message_from_supplier(&mut self, msg:Box<dyn Fn()->String>) {
+        todo!()
+    }
+
+    fn save_log(&mut self) {
+        todo!()
+    }
+
+    fn log_with_msg(&mut self, msg:String) {
+        todo!()
+    }
+
+    fn log_with_msg_and_arg(&mut self, msg:String, arg:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn log_with_msg_from_supplier(&mut self, msg:Box<dyn Fn()->String>) {
+        todo!()
+    }
+}

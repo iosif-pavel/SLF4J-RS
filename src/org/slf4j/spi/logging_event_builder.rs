@@ -67,7 +67,7 @@ pub trait LoggingEventBuilder {
 
     fn set_message(&mut self, msg:String);
 
-    fn set_message_from_supplier(&mut self, msg:dyn Fn()->String);
+    fn set_message_from_supplier(&mut self, msg:Box<dyn Fn()->String>);
 
     // Equivale a log() de la interfaz original
     fn save_log(&mut self);
@@ -79,5 +79,5 @@ pub trait LoggingEventBuilder {
     fn log_with_msg_and_arg(&mut self, msg:String, arg:Vec<Argument>);
 
     // Equivale a llamar a set_message_from_supplier seguido de save_log
-    fn log_with_msg_from_supplier(&mut self, msg:dyn Fn()->String);
+    fn log_with_msg_from_supplier(&mut self, msg:Box<dyn Fn()->String>);
 }
