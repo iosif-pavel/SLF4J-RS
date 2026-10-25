@@ -45,7 +45,7 @@ pub type SharedLogger = Arc<dyn Logger + Send + Sync + 'static>;
 pub const ROOT_LOGGER_NAME:&'static str = "ROOT";
 
 pub trait Logger {
-    fn get_name(&self)->&String;
+    fn get_name(&self)->String;
     fn make_logging_event_builder(&self, level:Level)->Arc<dyn LoggingEventBuilder>{
         let dleb = DefaultLoggingEventBuilder::new(self.clone_at(), level);
         Arc::new(dleb)
@@ -68,6 +68,7 @@ pub trait Logger {
             Level::Info => self.is_info_enabled(),
             Level::Warn => self.is_warn_enabled(),
             Level::Error => self.is_error_enabled(),
+            Level::Default => { false /*no deberia de existir en esta capa*/}
         }
     }
     

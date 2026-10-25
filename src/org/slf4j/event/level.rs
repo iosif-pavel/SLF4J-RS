@@ -34,7 +34,8 @@ pub enum Level {
     Warn = EventConstants::WARN,
     Info = EventConstants::INFO,
     Debug = EventConstants::DEBUG,
-    Trace = EventConstants::TRACE
+    Trace = EventConstants::TRACE,
+    Default
 }
 
 impl Level {
@@ -65,6 +66,7 @@ impl Debug for Level {
             Level::Info => write!(f, "INFO"),
             Level::Debug => write!(f, "DEBUG"),
             Level::Trace => write!(f, "TRACE"),
+            Level::Default => write!(f, "DEFAULT")
         }
     }
 }

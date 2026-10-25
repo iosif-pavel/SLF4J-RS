@@ -2,7 +2,7 @@ use crate::org::slf4j::event::Level;
 
 #[test]
 pub fn levels_eq(){
-    let a = Level::DEBUG;
+    let a = Level::Debug;
     let b = Level::int_to_level(10);
 
     assert!(b.is_some(), "Level expected");

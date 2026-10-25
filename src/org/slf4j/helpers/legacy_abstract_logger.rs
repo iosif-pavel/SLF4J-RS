@@ -22,4 +22,26 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-pub struct LegacyAbstractLogger;
+use crate::org::slf4j::{
+    Logger, Marker, helpers::AbstractLogger
+};
+
+pub static SERIAL_VERSION_UID:i64 = -7041884104854048950;
+
+pub trait LegacyAbstractLogger:AbstractLogger + Logger {
+    fn is_trace_from_marker_enabled(&self, _marker:&Box<dyn Marker>) -> bool {
+        self.is_trace_enabled()
+    }
+    fn is_debug_from_marker_enabled(&self, _marker:&Box<dyn Marker>) -> bool {
+        self.is_debug_enabled()
+    }
+    fn is_info_from_marker_enabled(&self, _marker:&Box<dyn Marker>) -> bool {
+        self.is_info_enabled()
+    }
+    fn is_warn_from_marker_enabled(&self, _marker:&Box<dyn Marker>) -> bool {
+        self.is_warn_enabled()
+    }
+    fn is_error_from_marker_enabled(&self, _marker:&Box<dyn Marker>) -> bool {
+        self.is_error_enabled()
+    }
+}

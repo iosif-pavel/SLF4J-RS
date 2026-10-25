@@ -41,7 +41,7 @@ use crate::{
     }
 };
 
-//pub static serial_version_uid:i64 = -2529255052481744503;
+pub static SERIAL_VERSION_UID:i64 = -2529255052481744503;
 
 pub trait AbstractLogger: Logger {
     fn read_resolve(&self)-> SharedLogger{
@@ -331,7 +331,7 @@ pub trait AbstractLogger: Logger {
             );
         }
     }
-    fn get_full_qualified_caller_name(&self)->&String;
+    fn get_full_qualified_caller_name(&self)->String;
     fn handle_normalized_logging_call(
         &self, 
         level:Option<Level>, 

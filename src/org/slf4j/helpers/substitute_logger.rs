@@ -22,4 +22,190 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+use std::sync::Arc;
+
+use crate::org::slf4j::{Logger, SharedLogger};
+
+ #[derive(Clone)]
 pub struct SubstituteLogger;
+
+impl SubstituteLogger {
+    pub fn get_name(&self)->&String{
+        todo!()
+    }
+
+    pub fn convert_to_arc(&self)->SharedLogger{
+        let logger = self.clone();
+        Arc::new(logger)
+    }
+}
+
+impl Logger for SubstituteLogger {
+    fn get_name(&self)->String {
+        todo!()
+    }
+
+    fn clone_at(&self)->crate::org::slf4j::SharedLogger {
+        todo!()
+    }
+
+    fn is_trace_enabled(&self)->bool {
+        todo!()
+    }
+
+    fn trace_with_msg(&self, msg:String) {
+        todo!()
+    }
+
+    fn trace_with_arg(&self, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn trace_with_msg_and_error(&self, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_trace_from_marker_enabled(&self, marker:&Box<dyn crate::org::slf4j::Marker>) -> bool {
+        todo!()
+    }
+
+    fn trace_from_marker_with_msg(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String) {
+        todo!()
+    }
+
+    fn trace_from_marker_with_arg(&self, marker:Box<dyn crate::org::slf4j::Marker>, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn trace_from_marker_with_msg_and_error(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_debug_enabled(&self)->bool {
+        todo!()
+    }
+
+    fn debug_with_msg(&self, msg:String) {
+        todo!()
+    }
+
+    fn debug_with_arg(&self, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn debug_with_msg_and_error(&self, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_debug_from_marker_enabled(&self, marker:&Box<dyn crate::org::slf4j::Marker>) -> bool {
+        todo!()
+    }
+
+    fn debug_from_marker_with_msg(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String) {
+        todo!()
+    }
+
+    fn debug_from_marker_with_arg(&self, marker:Box<dyn crate::org::slf4j::Marker>, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn debug_from_marker_with_msg_and_error(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_info_enabled(&self)->bool {
+        todo!()
+    }
+
+    fn info_with_msg(&self, msg:String) {
+        todo!()
+    }
+
+    fn info_with_arg(&self, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn info_with_msg_and_error(&self, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_info_from_marker_enabled(&self, marker:&Box<dyn crate::org::slf4j::Marker>) -> bool {
+        todo!()
+    }
+
+    fn info_from_marker_with_msg(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String) {
+        todo!()
+    }
+
+    fn info_from_marker_with_arg(&self, marker:Box<dyn crate::org::slf4j::Marker>, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn info_from_marker_with_msg_and_error(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_warn_enabled(&self)->bool {
+        todo!()
+    }
+
+    fn warn_with_msg(&self, msg:String) {
+        todo!()
+    }
+
+    fn warn_with_arg(&self, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn warn_with_msg_and_error(&self, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_warn_from_marker_enabled(&self, marker:&Box<dyn crate::org::slf4j::Marker>) -> bool {
+        todo!()
+    }
+
+    fn warn_from_marker_with_msg(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String) {
+        todo!()
+    }
+
+    fn warn_from_marker_with_arg(&self, marker:Box<dyn crate::org::slf4j::Marker>, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn warn_from_marker_with_msg_and_error(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_error_enabled(&self)->bool {
+        todo!()
+    }
+
+    fn error_with_msg(&self, msg:String) {
+        todo!()
+    }
+
+    fn error_with_arg(&self, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn error_with_msg_and_error(&self, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+
+    fn is_error_from_marker_enabled(&self, marker:&Box<dyn crate::org::slf4j::Marker>) -> bool {
+        todo!()
+    }
+
+    fn error_from_marker_with_msg(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String) {
+        todo!()
+    }
+
+    fn error_from_marker_with_arg(&self, marker:Box<dyn crate::org::slf4j::Marker>, format:String, args:Vec<crate::utils::Argument>) {
+        todo!()
+    }
+
+    fn error_from_marker_with_msg_and_error(&self, marker:Box<dyn crate::org::slf4j::Marker>, msg:String, t:crate::utils::Throwable) {
+        todo!()
+    }
+}
