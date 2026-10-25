@@ -40,39 +40,41 @@ use crate::{
     }
 };
 
-pub type SharedLogger = Arc<Box<dyn Logger + Send + Sync + 'static>>;
+pub type SharedLogger = Arc<dyn Logger + Send + Sync + 'static>;
 
 pub const ROOT_LOGGER_NAME:&'static str = "ROOT";
 
 pub trait Logger {
     fn get_name(&self)->&String;
-    fn make_logging_event_builder(&self, logger:SharedLogger, level:Level)->Arc<dyn LoggingEventBuilder>{
-        let dleb = DefaultLoggingEventBuilder::new(logger, level);
+    fn make_logging_event_builder(&self, level:Level)->Arc<dyn LoggingEventBuilder>{
+        let dleb = DefaultLoggingEventBuilder::new(self.clone_at(), level);
         Arc::new(dleb)
     }
     
-    fn at_level(&self, logger:SharedLogger, level:Level)->Arc<dyn LoggingEventBuilder>{
+    fn at_level(&self, level:Level)->Arc<dyn LoggingEventBuilder>{
         if self.is_enabled_for_level(&level){
-            self.make_logging_event_builder(logger, level)
+            self.make_logging_event_builder(level)
         }else{
             NOPLoggingEventBuilder::singleton()
         }
     }
+
+    fn clone_at(&self)->SharedLogger;
+
     fn is_enabled_for_level(&self, level:&Level)->bool{
         match level {
-            &Level::TRACE => self.is_trace_enabled(),
-            &Level::DEBUG => self.is_debug_enabled(),
-            &Level::INFO => self.is_info_enabled(),
-            &Level::WARN => self.is_warn_enabled(),
-            &Level::ERROR => self.is_error_enabled(),
-            _ => false,
+            Level::Trace => self.is_trace_enabled(),
+            Level::Debug => self.is_debug_enabled(),
+            Level::Info => self.is_info_enabled(),
+            Level::Warn => self.is_warn_enabled(),
+            Level::Error => self.is_error_enabled(),
         }
     }
     
     fn is_trace_enabled(&self)->bool;
-    fn at_trace(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
+    fn at_trace(&self)->Arc<dyn LoggingEventBuilder>{
         if self.is_trace_enabled() {
-            self.make_logging_event_builder(logger, Level::TRACE)
+            self.make_logging_event_builder(Level::Trace)
         }else {
             NOPLoggingEventBuilder::singleton()
         }
@@ -86,9 +88,9 @@ pub trait Logger {
     fn is_trace_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
 
     fn is_debug_enabled(&self)->bool;
-    fn at_debug(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
+    fn at_debug(&self)->Arc<dyn LoggingEventBuilder>{
         if self.is_debug_enabled() {
-            self.make_logging_event_builder(logger, Level::DEBUG)
+            self.make_logging_event_builder(Level::Debug)
         }else {
             NOPLoggingEventBuilder::singleton()
         }
@@ -102,9 +104,9 @@ pub trait Logger {
     fn is_debug_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_info_enabled(&self)->bool;
-    fn at_(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
+    fn at_info(&self)->Arc<dyn LoggingEventBuilder>{
         if self.is_info_enabled() {
-            self.make_logging_event_builder(logger, Level::INFO)
+            self.make_logging_event_builder(Level::Info)
         }else {
             NOPLoggingEventBuilder::singleton()
         }
@@ -118,9 +120,9 @@ pub trait Logger {
     fn is_info_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_warn_enabled(&self)->bool;
-    fn at_warn(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
+    fn at_warn(&self)->Arc<dyn LoggingEventBuilder>{
         if self.is_warn_enabled() {
-            self.make_logging_event_builder(logger, Level::WARN)
+            self.make_logging_event_builder(Level::Warn)
         }else {
             NOPLoggingEventBuilder::singleton()
         }
@@ -134,9 +136,9 @@ pub trait Logger {
     fn is_warn_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_error_enabled(&self)->bool;
-    fn at_error(&self, logger:SharedLogger)->Arc<dyn LoggingEventBuilder>{
+    fn at_error(&self)->Arc<dyn LoggingEventBuilder>{
         if self.is_error_enabled() {
-            self.make_logging_event_builder(logger, Level::ERROR)
+            self.make_logging_event_builder(Level::Error)
         }else {
             NOPLoggingEventBuilder::singleton()
         }

@@ -27,35 +27,30 @@ use std::fmt::{Debug, Display};
 use crate::org::slf4j::{
     event::{EventConstants}, spi::LocationAwareLoggerConstants
 };
-
-#[derive(PartialEq)]
-pub struct Level{
-    level_int:u8,
-    level_str:&'static str,
+#[derive(PartialEq, Clone, Copy)]
+#[repr(u8)]
+pub enum Level {
+    Error = EventConstants::ERROR,
+    Warn = EventConstants::WARN,
+    Info = EventConstants::INFO,
+    Debug = EventConstants::DEBUG,
+    Trace = EventConstants::TRACE
 }
 
 impl Level {
-    const fn new(i:u8, s:&'static str)->Self{
-        Self { level_int: i, level_str: s }
-    }
-    pub const ERROR:Level=Self::new(EventConstants::ERROR, "ERROR");
-    pub const WARN:Level=Self::new(EventConstants::WARN, "WARN");
-    pub const INFO:Level=Self::new(EventConstants::INFO, "INFO");
-    pub const DEBUG:Level=Self::new(EventConstants::DEBUG, "DEBUG");
-    pub const TRACE:Level=Self::new(EventConstants::TRACE, "TRACE");
-
+    
     pub fn to_int(&self)->u8{
-        self.level_int
+        *self as u8
     }
 
     pub fn int_to_level(int:u8)->Option<Self>{
         Some(
             match int {
-                EventConstants::TRACE => Self::TRACE,
-                EventConstants::DEBUG => Self::DEBUG,
-                EventConstants::INFO => Self::INFO,
-                EventConstants::WARN => Self::WARN,
-                EventConstants::ERROR => Self::ERROR,
+                EventConstants::TRACE => Self::Trace,
+                EventConstants::DEBUG => Self::Debug,
+                EventConstants::INFO => Self::Info,
+                EventConstants::WARN => Self::Warn,
+                EventConstants::ERROR => Self::Error,
                 _ => return None
             }
         )
@@ -64,12 +59,18 @@ impl Level {
 
 impl Debug for Level {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.level_str)
+        match self {
+            Level::Error => write!(f, "ERROR"),
+            Level::Warn => write!(f, "WARN"),
+            Level::Info => write!(f, "INFO"),
+            Level::Debug => write!(f, "DEBUG"),
+            Level::Trace => write!(f, "TRACE"),
+        }
     }
 }
 
 impl Display for Level {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.level_str)
+        write!(f, "{:?}", self)
     }
 }
