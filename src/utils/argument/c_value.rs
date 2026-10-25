@@ -1,10 +1,13 @@
-use std::fmt::{
-    Debug, 
-    Display
+use std::{
+    fmt::{
+        Debug, 
+        Display
+    }, 
+    sync::Arc
 };
 
 pub trait CValue: Display + Debug + Send + Sync + 'static {
-    fn clone_box(&self)->Box<dyn CValue>;
+    fn clone_box(&self)->Arc<dyn CValue>;
 }
 
 // Blanket impl: cualquier T: Debug + Send + Sync + Clone + 'static
@@ -14,13 +17,7 @@ impl<T> CValue for T
 where
     T: Display + Debug + Send + Sync + Clone + 'static,
 {
-    fn clone_box(&self) -> Box<dyn CValue> {
-        Box::new(self.clone())
-    }
-}
-
-impl Clone for Box<dyn CValue> {
-    fn clone(&self) -> Self {
-        self.clone_box()
+    fn clone_box(&self) -> Arc<dyn CValue> {
+        Arc::new(self.clone())
     }
 }

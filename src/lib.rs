@@ -1,7 +1,7 @@
 // Modules
-mod utils;
-mod org;
-pub mod test;
+pub mod utils;
+pub mod org;
+
 
 // Files
 
@@ -9,3 +9,6 @@ pub mod test;
 
 // Types
 
+// Test
+#[cfg(test)]
+pub mod test;

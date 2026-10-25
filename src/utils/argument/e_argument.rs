@@ -8,15 +8,15 @@ pub enum EArgument {
 impl EArgument {
     pub fn clone(&self)->Self{
         match self {
-            EArgument::Value(v) => EArgument::Value(v.clone_box()),
-            EArgument::Lazy(l) => EArgument::Lazy(l.clone_box())
+            EArgument::Value(v) => EArgument::Value(v.clone()),
+            EArgument::Lazy(l) => EArgument::Lazy(l.clone())
         }
     }
 
     pub fn call(&self)->Value{
         match self.clone() {
-            EArgument::Value(v) => v,
-            EArgument::Lazy(l) => l.call()
+            EArgument::Value(v) => v.clone(),
+            EArgument::Lazy(l) => l()
         }
     }
 }
