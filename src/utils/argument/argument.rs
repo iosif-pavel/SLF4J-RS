@@ -1,6 +1,13 @@
-use std::sync::Arc;
+use std::{
+    any::Any, 
+    sync::Arc
+};
 
-use crate::utils::argument::{Lazy, Value, e_argument::EArgument};
+use crate::utils::argument::{
+    Lazy, 
+    Value, 
+    e_argument::EArgument
+};
 
 #[derive(Clone)]
 pub struct Argument{
@@ -27,6 +34,14 @@ impl Argument {
         }
     }
 
+    pub fn new_void()->Self{
+        Self { 
+            arg: Arc::new(
+                EArgument::Void
+            ) 
+        }
+    }
+
     pub fn get(&self)->Value{
         self.arg.call()
     }
@@ -36,5 +51,9 @@ impl Argument {
         Self{
             arg
         }
+    }
+
+    pub fn as_any(&self)->Box<dyn Any>{
+        Box::new(self.clone())
     }
 }

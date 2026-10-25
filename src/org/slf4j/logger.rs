@@ -82,10 +82,10 @@ pub trait Logger {
     fn trace_with_msg(&self, msg:String);
     fn trace_with_arg(&self, format:String, args:Vec<Argument>);
     fn trace_with_msg_and_error(&self, msg:String, t:Throwable);
-    fn is_trace_from_marker_enabled(&self, marker:Box<dyn Marker>);
-    fn is_trace_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
-    fn is_trace_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
-    fn is_trace_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
+    fn is_trace_from_marker_enabled(&self, marker:&Box<dyn Marker>) -> bool;
+    fn trace_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
+    fn trace_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
+    fn trace_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
 
     fn is_debug_enabled(&self)->bool;
     fn at_debug(&self)->Arc<dyn LoggingEventBuilder>{
@@ -98,10 +98,10 @@ pub trait Logger {
     fn debug_with_msg(&self, msg:String);
     fn debug_with_arg(&self, format:String, args:Vec<Argument>);
     fn debug_with_msg_and_error(&self, msg:String, t:Throwable);
-    fn is_debug_from_marker_enabled(&self, marker:Box<dyn Marker>);
-    fn is_debug_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
-    fn is_debug_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
-    fn is_debug_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
+    fn is_debug_from_marker_enabled(&self, marker:&Box<dyn Marker>) -> bool;
+    fn debug_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
+    fn debug_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
+    fn debug_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_info_enabled(&self)->bool;
     fn at_info(&self)->Arc<dyn LoggingEventBuilder>{
@@ -114,10 +114,10 @@ pub trait Logger {
     fn info_with_msg(&self, msg:String);
     fn info_with_arg(&self, format:String, args:Vec<Argument>);
     fn info_with_msg_and_error(&self, msg:String, t:Throwable);
-    fn is_info_from_marker_enabled(&self, marker:Box<dyn Marker>);
-    fn is_info_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
-    fn is_info_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
-    fn is_info_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
+    fn is_info_from_marker_enabled(&self, marker:&Box<dyn Marker>) -> bool;
+    fn info_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
+    fn info_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
+    fn info_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_warn_enabled(&self)->bool;
     fn at_warn(&self)->Arc<dyn LoggingEventBuilder>{
@@ -130,10 +130,10 @@ pub trait Logger {
     fn warn_with_msg(&self, msg:String);
     fn warn_with_arg(&self, format:String, args:Vec<Argument>);
     fn warn_with_msg_and_error(&self, msg:String, t:Throwable);
-    fn is_warn_from_marker_enabled(&self, marker:Box<dyn Marker>);
-    fn is_warn_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
-    fn is_warn_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
-    fn is_warn_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
+    fn is_warn_from_marker_enabled(&self, marker:&Box<dyn Marker>) -> bool;
+    fn warn_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
+    fn warn_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
+    fn warn_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
     
     fn is_error_enabled(&self)->bool;
     fn at_error(&self)->Arc<dyn LoggingEventBuilder>{
@@ -146,8 +146,8 @@ pub trait Logger {
     fn error_with_msg(&self, msg:String);
     fn error_with_arg(&self, format:String, args:Vec<Argument>);
     fn error_with_msg_and_error(&self, msg:String, t:Throwable);
-    fn is_error_from_marker_enabled(&self, marker:Box<dyn Marker>);
-    fn is_error_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
-    fn is_error_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
-    fn is_error_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
+    fn is_error_from_marker_enabled(&self, marker:&Box<dyn Marker>) -> bool;
+    fn error_from_marker_with_msg(&self, marker:Box<dyn Marker>, msg:String);
+    fn error_from_marker_with_arg(&self, marker:Box<dyn Marker>, format:String, args:Vec<Argument>);
+    fn error_from_marker_with_msg_and_error(&self, marker:Box<dyn Marker>, msg:String, t:Throwable);
 }

@@ -22,4 +22,17 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+use std::sync::Arc;
+
+use crate::org::slf4j::SharedLogger;
+
 pub struct LoggerFactory;
+
+impl LoggerFactory {
+    pub fn singleton()->Arc<LoggerFactory>{
+        todo!()
+    }
+    pub fn get_logger(&self, name:String)->SharedLogger{
+        todo!()
+    }
+}

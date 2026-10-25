@@ -22,7 +22,7 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-use std::{cell::OnceCell, sync::Arc};
+use std::sync::{Arc, OnceLock};
 
 use crate::org::slf4j::{
     spi::LoggingEventBuilder, 
@@ -31,7 +31,7 @@ use crate::org::slf4j::{
     Marker
 };
 
-const  SINGLETON:OnceCell<Arc<NOPLoggingEventBuilder>> = OnceCell::new();
+static SINGLETON:OnceLock<Arc<NOPLoggingEventBuilder>> = OnceLock::new();
 
 pub struct NOPLoggingEventBuilder;
 

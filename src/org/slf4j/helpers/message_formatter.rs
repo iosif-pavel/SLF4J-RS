@@ -22,4 +22,17 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+use std::any::Any;
+
+use crate::utils::{Argument, Throwable};
+
 pub struct MessageFormatter;
+
+impl MessageFormatter {
+    pub fn get_throwable_candidate(args:&Vec<Box<dyn Any>>)->Option<Throwable>{
+        todo!()
+    }
+    pub fn trimmed_copy(args:&Vec<Box<dyn Any>>) -> Option<Vec<Argument>>{
+        todo!()
+    }
+}
